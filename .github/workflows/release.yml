@@ -1,14 +1,28 @@
 ---
-name: Sanity CI
+name: Publish to TestPyPI
 
 on:
   push:
     branches:
       -main
+  workflows_dispatch:
 
 jobs:
-  hello:
+  build-and-publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Say hello
-        run : echo "Hello from Actions"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install build tools
+        run: |
+          python -m pip install -U pip
+          pip install -U build twine
+      - name: Build
+        run: python -m build
+      - name: Publish to TestPuPI
+        env:
+          TWINE_USERNAME: "__token__"
+          TWINE_PASSWORD: ${{ secrets.TESTPYPI_API_TOKEN }}
+        run: twine upload --repository-url https://test.pypi.org/legacy/ dist/*
