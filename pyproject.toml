@@ -1,0 +1,24 @@
+# パッケージをビルドする上でのシステム情報
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+# パッケージのメタデータ
+[project]
+name = "example_package_TEPPEI_MATSUOKA_HERE"
+version = "0.0.1"
+authors = [
+   { name="Example Author", email="author@ezample.com" },
+]
+description = "A small example package"
+readme = "README.md"
+requires-python = ">=3.7"
+classfiers = [
+    "Programming Lnguage :: Python :: 3",
+    "License :: OST Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/pypa/asmpleproject"
+"Bug Tracker" = "https://github.com/pypa/sampleprogect/issues"
