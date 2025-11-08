@@ -1,3 +1,4 @@
+---
 name: Hello GitHub Actions
 
 on:
@@ -12,5 +13,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      -name: Run a one-line script
-       run: echo Hello Github Actions!!
+      - name: Run a one-line script
+        run: echo Hello Github Actions!!
